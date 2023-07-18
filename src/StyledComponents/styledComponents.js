@@ -1,48 +1,48 @@
-import styled, {css} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 
-const getSize = (props) => {
-  switch(props.type){
-    case 'large': return '300px';
-    case 'medium': return '200px';
-    case 'small': return '100px'
-    default: return '200px'
-  }
+const rotate = keyframes`
+from{
+  transform: rotate(0deg);
 }
-
-const common = css`
-color: blue;
-font-family: bold;
-font-weight: 400;
-padding: 10px;
-font-size: 30px;
+to{
+  transform: rotate(360deg);
+}
 `
 
-export const Container = styled('div')`
+export const Container = styled.div`
+padding: 30px;
+`
+
+export const Button = styled.div`
 display: flex;
 align-items: center;
-background-color: coral;
-color: white;
-padding: 20px;
-`
-export const Title = styled.h1`
-${common}
-font-size: 30px;
-`
-
-export const Desc = styled.h1`
-${common}
-font-size: 20px;
-color: yellow;
-`
-
-export const Box = styled.div`
-display: flex;
 justify-content: center;
+width: 200px;
+height: 40px;
+color: white;
+background-color: coral;
+border-radius: 8px;
+cursor: pointer;
+margin-bottom: 20px;
+&:active{
+  transform: scale(0.95);
+}
+`
+
+export const ActiveButton = styled(Button)`
+height: 50px;
+width: 300px;
+color: gray;
+`
+
+export const Rotate = styled('div')`
+display: flex;
 align-items: center;
-width: ${getSize};
-height: ${(props)=> getSize(props)};
-border: 2px solid black;
-margin: 20px;
-font-size: 20px;
-background-color: ${(props) => props.rang ==='yellow' ? 'yellow': 'green'};
+justify-content: center;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+background: coral;
+border: 2px solid yellow;
+animation: ${rotate} 2s linear infinite;
 `
